@@ -19,7 +19,7 @@ Just Alarm은 Windows용 간단한 알람 앱입니다.
 
 ## 빌드 ·  개발하기
 
-개발 환경 준비, 빌드 명령, 프로젝트 구조는 [개발 문서](./DEVELOPMENT.md)에 정리해 두었습니다.
+개발 환경 준비, 빌드 명령, 프로젝트 구조는 [개발 문서](docs/DEVELOPMENT.md)에 정리해 두었습니다.
 
 ## Credits
 
