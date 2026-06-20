@@ -30,6 +30,8 @@ SetupIconFile=.\JustAlarm\icon.ico
 SolidCompression=yes
 WizardStyle=modern dark
 
+LicenseFile=LICENSE
+
 [Languages]
 Name: "korean"; MessagesFile: "compiler:Languages\Korean.isl"
 
