@@ -11,7 +11,7 @@ Just Alarm은 Windows용 간단한 알람 앱입니다.
 
 ## 다운로드
 
-[Just Alarm-Win 10+ · x64](https://github.com/justalarm/JustAlarm/releases/JustAlarm-Setup.exe)를 설치파일을 받아 실행하세요.
+[Just Alarm-Win 10+ · x64](https://github.com/justalarm/JustAlarm/releases/download/v1.3/JustAlarm-Setup.exe)를 설치파일을 받아 실행하세요.
 
 전체 릴리즈 [Github Release](https://github.com/justalarm/JustAlarm/releases/tag/v1.3)에서 확인할 수 있습니다.
 
