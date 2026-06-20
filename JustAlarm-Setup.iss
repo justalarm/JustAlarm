@@ -3,7 +3,7 @@
 ; Non-commercial use only
 
 #define MyAppName "Just Alarm"
-#define MyAppVersion "1.3"
+#define MyAppVersion "1.4"
 #define MyAppPublisher "JustAlarm"
 #define MyAppURL "https://justalarm.github.io"
 #define MyAppExeName "JustAlarm.exe"
