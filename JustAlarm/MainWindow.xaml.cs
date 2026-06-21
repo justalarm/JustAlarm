@@ -1,6 +1,4 @@
 using System;
-using System.IO;
-using System.Media;
 using System.Windows;
 using System.Windows.Threading;
 using Hardcodet.Wpf.TaskbarNotification;
@@ -16,9 +14,8 @@ namespace JustAlarm
         private bool _alarmSet = false;
         private TaskbarIcon _trayIcon;
         private bool _realClose = false;
-        private SoundPlayer _soundPlayer;
 
-        private const string CurrentVersion = "1.4";
+        private const string CurrentVersion = "1.3";
 
         public MainWindow()
         {
@@ -47,13 +44,13 @@ namespace JustAlarm
             {
                 using var client = new System.Net.Http.HttpClient();
                 client.Timeout = TimeSpan.FromSeconds(5);
-                string latest = await client.GetStringAsync("https://justalarm.github.io");
+                string latest = await client.GetStringAsync("https://justalarm.dothome.co.kr/version.txt");
                 latest = latest.Trim();
 
                 if (latest != CurrentVersion)
                 {
                     MessageBox.Show(
-                        $"새 버전 {latest}이 출시됐습니다!\njustalarm.github.io 에서 다운로드하세요.",
+                        $"새 버전 {latest}이 출시됐습니다!\njustalarm.dothome.co.kr 에서 다운로드하세요.",
                         "⬆️ 업데이트 알림",
                         MessageBoxButton.OK,
                         MessageBoxImage.Information);
@@ -91,7 +88,6 @@ namespace JustAlarm
             {
                 _realClose = true;
                 _trayIcon.Dispose();
-                _soundPlayer?.Stop();
                 Application.Current.Shutdown();
             };
 
@@ -128,32 +124,13 @@ namespace JustAlarm
                 int h = _alarmHour % 12;
                 if (h == 0) h = 12;
                 string ampm = _alarmHour < 12 ? "AM" : "PM";
-
-                try
-                {
-                    string alarm09Path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows), @"Media\Alarm09.wav");
-                    if (File.Exists(alarm09Path))
-                    {
-                        _soundPlayer = new SoundPlayer(alarm09Path);
-                        _soundPlayer.PlayLooping();
-                    }
-                    else
-                    {
-                        SystemSounds.Exclamation.Play();
-                    }
-                }
-                catch
-                {
-                    SystemSounds.Exclamation.Play();
-                }
-
+                using var player = new System.Media.SoundPlayer(@"C:\Windows\Media\Alarm09.wav");
+                player.Play();
                 Show();
                 WindowState = WindowState.Normal;
                 Activate();
                 MessageBox.Show($"알람! {ampm} {h}:{_alarmMin:D2}", "⏰ Just Alarm",
                     MessageBoxButton.OK, MessageBoxImage.Information);
-                
-                _soundPlayer?.Stop();
                 StatusText.Text = "알람이 울렸습니다.";
             }
         }
@@ -189,7 +166,6 @@ namespace JustAlarm
             _alarmSet = false;
             _alarmHour = -1;
             _alarmMin = -1;
-            _soundPlayer?.Stop();
             StatusText.Text = "알람이 취소되었습니다.";
         }
     }
