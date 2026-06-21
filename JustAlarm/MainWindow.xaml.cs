@@ -15,7 +15,7 @@ namespace JustAlarm
         private TaskbarIcon _trayIcon;
         private bool _realClose = false;
 
-        private const string CurrentVersion = "1.3";
+        private const string CurrentVersion = "1.5";
 
         public MainWindow()
         {
